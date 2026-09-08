@@ -23,4 +23,3 @@ private:
 	Text* pText_;
 	SceneManager* pSceneManager_;
 };
-
