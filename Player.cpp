@@ -60,7 +60,7 @@ Player::Player(GameObject* parent)
 
 void Player::Initialize()
 {
-	hWalkModel_ = Model::Load("ojisan.fbx");
+	hWalkModel_ = Model::Load("Walking.fbx");
 	Model::SetAnimFrame(hWalkModel_, 0, 59, 1.0);
 	transform_.position_ = { 0.5f, 0.0, 0.5f };
 	hIdleModel_ = Model::Load("Idle.fbx");
@@ -165,16 +165,17 @@ void Player::Update()
 	//壁オブジェクトに食い込んでたら戻す！
 	gmap = ground_->GetMapData();//マップを取得
 	//マップの座標に変換する、めり込んでたら戻す。
-	int mapX = (int)((wpos.x) + 10) / 2;
-	int mapZ = (int)(10 - (wpos.z)) / 2;
+	int mapX = (int)((wpos.x) + 10.0f) / 2;
+	int mapZ = (int)(10.0f - (wpos.z)) / 2;
 	if (gmap[mapZ][mapX] == 1)
-	{
-		pos = pos - SPEED * move;
-		XMStoreFloat3(&transform_.position_, pos);
-	}
+		{
+			pos = pos - SPEED * move;
+			XMStoreFloat3(&transform_.position_, pos);
+		}
 
-	//pos = XMVectorAdd(pos, SPEED*move);
+		//pos = XMVectorAdd(pos, SPEED*move);
 }
+
 
 void Player::Draw()
 {

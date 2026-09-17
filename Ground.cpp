@@ -80,9 +80,9 @@ Ground::Ground(GameObject* parent)
 void Ground::Initialize()
 {
     hModel_ = Model::Load("Map2.fbx");
-    hModelt_ = Model::Load("block.fbx");
-    hEsaModel_ = Model::Load("esa.fbx");
-    hPEsaModel_ = Model::Load("Ball.fbx");
+    hModelt_ = Model::Load("Brock.fbx");
+   /* hEsaModel_ = Model::Load("esa.fbx");
+    hPEsaModel_ = Model::Load("Ball.fbx");*/
 
 }
 
@@ -94,15 +94,15 @@ void Ground::Draw()
 {
     Model::SetTransform(hModel_, transform_);
     Model::Draw(hModel_);
-    for (int j = 0;j < 10;j++) {
-        for (int i = 0;i < 10;i++) {
+    for (int j = 0;j < mapHeight_;j++) {
+        for (int i = 0;i < mapWidth_;i++) {
             if (mapData_[j][i] == 1) {
                 Transform tr;
                 tr.position_ = { -9.0f + i * 2.0f, 0.0f, 9.0f - j * 2.0f };
                 Model::SetTransform(hModelt_, tr);
                 Model::Draw(hModelt_);
             }
-            if (objMap_[j][i] == 1) {
+          /*  if (objMap_[j][i] == 1) {
                 Transform tr2;
                 tr2.position_ = { -9.0f + i * 2.0f, 0.0f, 9.0f - j * 2.0f };
                 tr2.scale_ = { 0.3f, 0.3f, 0.3f };
@@ -117,7 +117,11 @@ void Ground::Draw()
                 tr2.rotate_.y += 1.0f;
                 Model::SetTransform(hPEsaModel_, tr2);
                 Model::Draw(hPEsaModel_);
-            }
+            }*/
         }
     }
+}
+
+void Ground::Release()
+{
 }

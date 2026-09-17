@@ -1,5 +1,8 @@
 #pragma once
 #include "Engine\\GameObject.h"
+#include "Engine\\Text.h"
+#include "Engine\\SceneManager.h"
+
 class TitleScene :
     public GameObject
 {

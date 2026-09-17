@@ -54,6 +54,7 @@ namespace Image
 			if (_datas[i] == nullptr)
 			{
 				_datas[i] = pData;
+				ResetRect(i);
 				return i;
 			}
 		}
@@ -92,6 +93,9 @@ namespace Image
 		{
 			return;
 		}
+
+		if (_datas[handle] == nullptr)
+			return;
 
 		//“¯‚¶ƒ‚ƒfƒ‹‚ð‘¼‚Å‚àŽg‚Á‚Ä‚¢‚È‚¢‚©
 		bool isExist = false;

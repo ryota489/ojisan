@@ -16,13 +16,23 @@ Food::~Food()
 void Food::Initialize()
 {
 	transform_.scale_ = { 0.3f, 0.3f, 0.3f };
+	if (type_ == FoodType::FOODTYPE_NORMAL)
+	{
+		hModel_ = Model::Load("UltraBall.FBX");
+		score_ = 1;
+	}
+	else if(type_ == FoodType::FOODTYPE_POWER)
+	{
+		hModel_ = Model::Load("poweresa.fbx");
+		score_ = 5;
+	}
 }
 
 void Food::Update()
 {
 	if (type_ == FoodType::FOODTYPE_POWER)
 	{
-		transform_.rotate_.y += 1.0f;
+		transform_.rotate_.y += 12;
 	}
 }
 
@@ -43,7 +53,7 @@ void Food::SetFoodType(FoodType type)
 	{
 		SphereCollider* collision = new SphereCollider(XMFLOAT3(0, 0.3, 0), 0.3f);
 		AddCollider(collision);
-		hModel_ = Model::Load("esa.fbx");
+		hModel_ = Model::Load("UltraBall.FBX");
 		score_ = 1;
 	}
 	else if (type_ == FoodType::FOODTYPE_POWER)
